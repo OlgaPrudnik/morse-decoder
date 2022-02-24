@@ -37,8 +37,17 @@ const MORSE_TABLE = {
     '-----':  '0',
 };
 
+
+ let split = (splitStr) => splitStr.match(/.{1,10}/g);
+
 function decode(expr) {
-    // write your solution here
+    let splitArray = split(expr)
+    let morseArray = splitArray.map(elem => {
+        return elem.replace(/10/g, ".").replace(/11/g, "-").replace(/0/g, "")
+    })
+    return morseArray.map(elem => {
+        return MORSE_TABLE[elem]
+    }).join("")
 }
 
 module.exports = {
